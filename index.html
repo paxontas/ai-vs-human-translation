@@ -266,67 +266,56 @@
         }
 
         /* Выдвижная навигация для мобильных */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-                right: -12px;
-                padding: 20px 8px;
-                background: #2c3e50;
-                color: transparent;
-                width: 16px;
-                transition: right 0.3s ease;
-                border-radius: 8px 0 0 8px;
-            }
-            
-            .nav-toggle::before {
-                content: "☰";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: white;
-                font-size: 14px;
-                font-weight: bold;
-            }
-            
-            .side-nav {
-                position: fixed;
-                top: 50%;
-                right: -280px;
-                transform: translateY(-50%);
-                width: 260px;
-                height: auto;
-                max-height: 70vh;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                border-radius: 10px 0 0 10px;
-                overflow-y: auto;
-            }
-            
-            .side-nav.active {
-                right: 0;
-            }
-            
-            .side-nav.active ~ .nav-toggle {
-                right: 260px;
-            }
-            
-            /* Меняем иконку при открытии */
-            .side-nav.active ~ .nav-toggle::before {
-                content: "✕";
-            }
-            
-            .nav-section {
-                margin-bottom: 15px;
-            }
-            
-            .sub-nav {
-                display: block;
-                margin-left: 10px;
-            }
-        }
-        @media (max-width: 768px) {
-    /* ... существующие стили ... */
+        /* Выдвижная навигация для мобильных (все ориентации) */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        right: -12px;
+        padding: 20px 8px;
+        background: #2c3e50;
+        color: transparent;
+        width: 16px;
+        transition: right 0.3s ease;
+        border-radius: 8px 0 0 8px;
+    }
+    
+    .nav-toggle::before {
+        content: "☰";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    .side-nav {
+        position: fixed;
+        top: 50%;
+        right: -280px;
+        transform: translateY(-50%);
+        width: 260px;
+        height: auto;
+        max-height: 70vh;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        border-radius: 10px 0 0 10px;
+        overflow-y: auto;
+    }
+    
+    .side-nav.active {
+        right: 0;
+    }
+    
+    .side-nav.active ~ .nav-toggle {
+        right: 260px;
+    }
+    
+    /* Меняем иконку при открытии */
+    .side-nav.active ~ .nav-toggle::before {
+        content: "✕";
+    }
     
     /* Кнопка закрытия внутри меню */
     .nav-close {
@@ -357,6 +346,27 @@
         writing-mode: horizontal-tb;
         font-size: 18px;
         font-weight: bold;
+    }
+    
+    .nav-section {
+        margin-bottom: 15px;
+    }
+    
+    .sub-nav {
+        display: block;
+        margin-left: 10px;
+    }
+    
+    /* Адаптация для горизонтальной ориентации */
+    @media (orientation: landscape) {
+        .side-nav {
+            max-height: 85vh; /* Чуть выше в горизонтальной */
+            width: 240px; /* Чуть уже */
+        }
+        
+        .side-nav.active ~ .nav-toggle {
+            right: 240px; /* Подгоняем под новую ширину */
+        }
     }
 }
     </style>
@@ -741,6 +751,7 @@
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
