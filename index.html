@@ -355,6 +355,28 @@
         display: block;
         margin-left: 10px;
     }
+    
+    /* Убираем отступы строк в source-info для мобильных */
+    .source-info .indented-line {
+        margin-left: 0 !important;
+        text-indent: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .source-info .first-line {
+        margin-bottom: 4px !important;
+    }
+    
+    .article-block, .authors-block {
+        margin-bottom: 8px !important;
+    }
+    
+    /* Делаем текст более компактным на мобильных */
+    .source-info {
+        padding: 12px !important;
+        font-size: 0.85em !important;
+    }
 }
 
 /* Отдельно для горизонтальной ориентации */
@@ -362,13 +384,32 @@
     .side-nav {
         max-height: 85vh;
         width: 240px;
+        right: -280px !important;
+    }
+    
+    .side-nav.active {
+        right: 0 !important;
     }
     
     .side-nav.active ~ .nav-toggle {
-        right: 240px;
+        right: 240px !important;
+    }
+    
+    /* Для очень широких экранов в горизонтальной ориентации */
+    @media (min-width: 769px) and (orientation: landscape) {
+        .side-nav {
+            right: 20px !important;
+        }
+        
+        .nav-toggle {
+            display: none !important;
+        }
+        
+        .nav-close {
+            display: none !important;
+        }
     }
 }
-    </style>
 </head>
 <body>
     
@@ -746,6 +787,7 @@
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
