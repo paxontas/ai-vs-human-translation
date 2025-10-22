@@ -3,11 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио переводчика: Сравнительный анализ</title>
     <style>
         /* Базовые стили */
-
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
@@ -169,172 +167,164 @@
             background: #f8f9fa;
             border-radius: 5px;
         }
+
         /* Стили для подразделов навигации */
-.sub-nav {
-    margin-left: 15px;
-    border-left: 2px solid #3498db;
-    padding-left: 8px;
-}
+        .sub-nav {
+            margin-left: 15px;
+            border-left: 2px solid #3498db;
+            padding-left: 8px;
+        }
 
-.sub-nav-item {
-    display: block;
-    padding: 6px 10px;
-    margin: 3px 0;
-    text-decoration: none;
-    color: #7f8c8d;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-    font-size: 12px;
-    transform: scale(1);
-}
+        .sub-nav-item {
+            display: block;
+            padding: 6px 10px;
+            margin: 3px 0;
+            text-decoration: none;
+            color: #7f8c8d;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            transform: scale(1);
+        }
 
-.sub-nav-item:hover {
-    background: #ecf0f1;
-    color: #2c3e50;
-}
+        .sub-nav-item:hover {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
 
-.sub-nav-item.active {
-    background: #3498db;
-    color: white;
-    transform: scale(1.05);
-    font-weight: bold;
-}
+        .sub-nav-item.active {
+            background: #3498db;
+            color: white;
+            transform: scale(1.05);
+            font-weight: bold;
+        }
 
-.nav-section {
-    margin-bottom: 10px;
-}
-.source-info {
-    background: #e8f4fd;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 15px 0;
-    border-left: 4px solid #3498db;
-    font-size: 0.9em;
-}
+        .nav-section {
+            margin-bottom: 10px;
+        }
 
-.source-info h3 {
-    margin-top: 0;
-    color: #2c3e50;
-}
-.source-info .indented-line {
-    margin-left: 85px;
-    text-indent: -20px;
-    margin-top: -8px;
-}
+        .source-info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+            font-size: 0.9em;
+        }
 
-.source-info .article-title,
-.source-info .authors-line {
-    margin-bottom: 0;
-}
- 
+        .source-info h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
 
- .source-info .first-line {
-    margin-bottom: 0;
-}
+        .source-info .indented-line {
+            margin-left: 85px;
+            text-indent: -20px;
+            margin-top: -8px;
+        }
 
-.source-info .indented-line {
-    margin-left: 85px;
-    text-indent: -20px;
-    margin-top: -8px;
-    margin-bottom: 8px;
-}
+        .source-info .article-title,
+        .source-info .authors-line {
+            margin-bottom: 0;
+        }
 
-.article-block, .authors-block {
-    margin-bottom: 8px;
-}
+        .source-info .first-line {
+            margin-bottom: 0;
+        }
 
+        .source-info .indented-line {
+            margin-left: 85px;
+            text-indent: -20px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+        }
 
+        .article-block, .authors-block {
+            margin-bottom: 8px;
+        }
 
-/* Выдвижная навигация для мобильных */
-@media (max-width: 768px) {
-    .side-nav {
-        position: fixed;
-        top: 50%;
-        right: -250px; /* Скрыта за экраном */
-        transform: translateY(-50%);
-        width: 260px;
-        height: auto;
-        max-height: 70vh;
-        transition: right 0.3s ease;
-        z-index: 1000;
-        border-radius: 10px 0 0 10px;
-        overflow-y: auto;
-    }
-    
-    .side-nav.active {
-        right: 0; /* Показываем при клике */
-    }
-    
-    /* Кнопка для открытия */
-    /* Кнопка для открытия */
-.nav-toggle {
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background: #2c3e50;
-    color: white;
-    padding: 12px 6px;
-    border-radius: 8px 0 0 8px;
-    cursor: pointer;
-    z-index: 999;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    font-size: 12px;
-    font-weight: bold;
-    display: none;
-    border: none;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-}
+        /* Кнопка для открытия навигации */
+        .nav-toggle {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: #2c3e50;
+            color: white;
+            padding: 12px 6px;
+            border-radius: 8px 0 0 8px;
+            cursor: pointer;
+            z-index: 999;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 12px;
+            font-weight: bold;
+            display: none;
+            border: none;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
 
-/* Убираем текст, оставляем только иконку */
-.nav-toggle::before {
-    content: "≡";
-    writing-mode: horizontal-tb;
-    font-size: 16px;
-}
-
-/* Показываем только на мобильных */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: block;
-        right: -20px; /* Скрываем за экраном, оставляя видимой часть */
-    }
-    
-    .nav-toggle:hover {
-        right: 0; /* При наведении показываем полностью */
-    }
-    
-    .side-nav {
-        position: fixed;
-        top: 50%;
-        right: -280px; /* Полностью скрыта */
-        transform: translateY(-50%);
-        width: 260px;
-        height: auto;
-        max-height: 70vh;
-        transition: right 0.3s ease;
-        z-index: 1000;
-        border-radius: 10px 0 0 10px;
-        overflow-y: auto;
-    }
-    
-    .side-nav.active {
-        right: 0; /* Показываем при клике */
-    }
-}
-    
-    .nav-section {
-        margin-bottom: 15px;
-    }
-    
-    .sub-nav {
-        display: block; /* Показываем подразделы */
-        margin-left: 10px;
-    }
-}
-
+        /* Выдвижная навигация для мобильных */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+                right: -12px;
+                padding: 20px 8px;
+                background: #2c3e50;
+                color: transparent;
+                width: 16px;
+                transition: right 0.3s ease;
+                border-radius: 8px 0 0 8px;
+            }
+            
+            .nav-toggle::before {
+                content: "☰";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+            }
+            
+            .side-nav {
+                position: fixed;
+                top: 50%;
+                right: -280px;
+                transform: translateY(-50%);
+                width: 260px;
+                height: auto;
+                max-height: 70vh;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                border-radius: 10px 0 0 10px;
+                overflow-y: auto;
+            }
+            
+            .side-nav.active {
+                right: 0;
+            }
+            
+            .side-nav.active ~ .nav-toggle {
+                right: 260px;
+            }
+            
+            /* Меняем иконку при открытии */
+            .side-nav.active ~ .nav-toggle::before {
+                content: "✕";
+            }
+            
+            .nav-section {
+                margin-bottom: 15px;
+            }
+            
+            .sub-nav {
+                display: block;
+                margin-left: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -645,13 +635,34 @@
         </div>
     </section>
 
-        <script>
+            <script>
+        // Функция для переключения навигации
+        function toggleNav() {
+            const nav = document.querySelector('.side-nav');
+            nav.classList.toggle('active');
+        }
+
+        // Закрытие по клику вне окна
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.side-nav');
+            const toggle = document.querySelector('.nav-toggle');
+            
+            // Если клик не по навигации и не по кнопке, и навигация открыта - закрываем
+            if (!nav.contains(event.target) && !toggle.contains(event.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Останавливаем всплытие кликов внутри навигации
+        document.querySelector('.side-nav').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
         // JavaScript для активной навигации
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('section, .text-block');
             const navItems = document.querySelectorAll('.nav-item, .sub-nav-item');
             
-            // Функция для определения активного раздела
             function setActiveSection() {
                 let current = '';
                 const scrollPos = window.scrollY + 150;
@@ -673,22 +684,12 @@
                 });
             }
             
-            // Слушаем событие прокрутки
             window.addEventListener('scroll', setActiveSection);
-            
-            // Инициализация при загрузке
             setActiveSection();
         });
     </script>
-    <!-- Кнопка открытия навигации -->
-<div class="nav-toggle" onclick="toggleNav()">📋 МЕНЮ</div>
-
-<script>
-function toggleNav() {
-    const nav = document.querySelector('.side-nav');
-    nav.classList.toggle('active');
-}
-</script>
+    
+    <!-- ОДНА кнопка открытия навигации -->
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
