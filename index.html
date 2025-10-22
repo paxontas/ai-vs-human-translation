@@ -325,9 +325,51 @@
                 margin-left: 10px;
             }
         }
+        @media (max-width: 768px) {
+    /* ... существующие стили ... */
+    
+    /* Кнопка закрытия внутри меню */
+    .nav-close {
+        position: absolute;
+        top: 50%;
+        left: -40px;
+        transform: translateY(-50%);
+        background: #2c3e50;
+        color: white;
+        padding: 25px 10px;
+        border-radius: 0 8px 8px 0;
+        cursor: pointer;
+        z-index: 1001;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 60px;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    }
+    
+    .nav-close::before {
+        content: "✕";
+        writing-mode: horizontal-tb;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
     </style>
 </head>
 <body>
+    <nav class="side-nav">
+    <!-- ДОБАВЬ ЭТУ СТРОЧКУ ПЕРВОЙ ВНУТРИ nav -->
+    <div class="nav-close" onclick="toggleNav()" title="Закрыть меню"></div>
+    
+    <!-- остальной код навигации без изменений -->
+    <div class="nav-section">
+        <a href="#medical-text" class="nav-item">Медицинский перевод</a>
+        ...
     <!-- Боковая навигация -->
         <!-- Боковая навигация -->
     <nav class="side-nav">
@@ -636,63 +678,70 @@
     </section>
 
                 <script>
-        // Функция для переключения навигации
-        function toggleNav() {
-            const nav = document.querySelector('.side-nav');
-            nav.classList.toggle('active');
-        }
+    // Функция для переключения навигации
+    function toggleNav() {
+        const nav = document.querySelector('.side-nav');
+        nav.classList.toggle('active');
+    }
 
-        // JavaScript для активной навигации
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section, .text-block');
-            const navItems = document.querySelectorAll('.nav-item, .sub-nav-item');
+    // JavaScript для активной навигации
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('section, .text-block');
+        const navItems = document.querySelectorAll('.nav-item, .sub-nav-item');
+        
+        function setActiveSection() {
+            let current = '';
+            const scrollPos = window.scrollY + 150;
             
-            function setActiveSection() {
-                let current = '';
-                const scrollPos = window.scrollY + 150;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
                 
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${current}`) {
-                        item.classList.add('active');
-                    }
-                });
-            }
-            
-            // Закрытие по клику вне окна
-            document.addEventListener('click', function(event) {
-                const nav = document.querySelector('.side-nav');
-                const toggle = document.querySelector('.nav-toggle');
-                
-                // Если клик не по навигации и не по кнопке, и навигация открыта - закрываем
-                if (!nav.contains(event.target) && !toggle.contains(event.target) && nav.classList.contains('active')) {
-                    nav.classList.remove('active');
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
                 }
             });
-
-            // Останавливаем всплытие кликов внутри навигации (теперь когда элемент точно есть)
-            document.querySelector('.side-nav').addEventListener('click', function(event) {
-                event.stopPropagation();
-            });
             
-            window.addEventListener('scroll', setActiveSection);
-            setActiveSection();
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        }
+        
+        // Закрытие по клику вне окна
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.side-nav');
+            const toggle = document.querySelector('.nav-toggle');
+            
+            if (!nav.contains(event.target) && !toggle.contains(event.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
         });
-    </script>
+
+        // Останавливаем всплытие кликов внутри навигации
+        document.querySelector('.side-nav').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
+        // И для кнопки закрытия тоже
+        document.querySelector('.nav-close').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+        
+        window.addEventListener('scroll', setActiveSection);
+        setActiveSection();
+    });
+</script>
+    
+    
     
     <!-- ОДНА кнопка открытия навигации -->
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
