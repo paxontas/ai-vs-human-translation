@@ -245,58 +245,51 @@
 
 
 
-/* Мобильные стили */
+/* Выдвижная навигация для мобильных */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
+    .side-nav {
+        position: fixed;
+        top: 50%;
+        right: -250px; /* Скрыта за экраном */
+        transform: translateY(-50%);
+        width: 260px;
+        height: auto;
+        max-height: 70vh;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        border-radius: 10px 0 0 10px;
+        overflow-y: auto;
+    }
+    
+    .side-nav.active {
+        right: 0; /* Показываем при клике */
+    }
+    
+    /* Кнопка для открытия */
+    .nav-toggle {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background: #2c3e50;
+        color: white;
+        padding: 15px 8px;
+        border-radius: 8px 0 0 8px;
+        cursor: pointer;
+        z-index: 999;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
         font-size: 14px;
+        font-weight: bold;
     }
     
-    .text-block {
-        padding: 10px;
-        margin: 10px 0;
-    }
-    
-    .side-nav {
-        position: relative;
-        right: auto;
-        top: auto;
-        transform: none;
-        margin: 20px 0;
-        width: 100%;
-    }
-    
-    h1 {
-        font-size: 1.5em;
-    }
-    
-    h2 {
-        font-size: 1.3em;
-    }
-}
-
-
-
-@media (max-width: 768px) {
-    .side-nav {
-        display: none; /* Скрываем на мобильных */
-    }
-    
-    /* Или делаем горизонтальной */
-    .side-nav {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    
-    .nav-item {
-        flex: 1;
-        min-width: 120px;
+    .nav-section {
+        margin-bottom: 15px;
     }
     
     .sub-nav {
-        display: none; /* Скрываем подменю на мобильных */
+        display: block; /* Показываем подразделы */
+        margin-left: 10px;
     }
 }
 
@@ -645,5 +638,15 @@
             setActiveSection();
         });
     </script>
+    <!-- Кнопка открытия навигации -->
+<div class="nav-toggle" onclick="toggleNav()">📋 МЕНЮ</div>
+
+<script>
+function toggleNav() {
+    const nav = document.querySelector('.side-nav');
+    nav.classList.toggle('active');
+}
+</script>
 </body>
 </html>
+
