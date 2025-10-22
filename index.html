@@ -384,32 +384,27 @@
     .side-nav {
         max-height: 85vh;
         width: 240px;
-        right: -280px !important;
-    }
-    
-    .side-nav.active {
-        right: 0 !important;
-    }
-    
-    .side-nav.active ~ .nav-toggle {
-        right: 240px !important;
-    }
-    
-    /* Для очень широких экранов в горизонтальной ориентации */
-    @media (min-width: 769px) and (orientation: landscape) {
-        .side-nav {
-            right: 20px !important;
-        }
-        
-        .nav-toggle {
-            display: none !important;
-        }
-        
-        .nav-close {
-            display: none !important;
-        }
     }
 }
+
+/* Для очень маленьких экранов в горизонтальной ориентации */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    .side-nav {
+        max-height: 90vh;
+        width: 220px;
+    }
+    
+    .nav-section {
+        margin-bottom: 8px;
+    }
+    
+    .nav-item, .sub-nav-item {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+    
+    
          </style>
 </head>
 <body>
@@ -780,6 +775,14 @@
         window.addEventListener('scroll', setActiveSection);
         setActiveSection();
     });
+                    function handleResize() {
+    const nav = document.querySelector('.side-nav');
+    if (window.innerWidth > 768 && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+    }
+}
+
+window.addEventListener('resize', handleResize);
 </script>
     
     
@@ -788,6 +791,7 @@
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
