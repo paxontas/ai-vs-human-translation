@@ -266,22 +266,49 @@
     }
     
     /* Кнопка для открытия */
+    /* Кнопка для открытия */
+.nav-toggle {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 15px 8px;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    z-index: 999;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 14px;
+    font-weight: bold;
+    display: none; /* Скрыта на десктопе */
+}
+
+/* Показываем только на мобильных */
+@media (max-width: 768px) {
     .nav-toggle {
+        display: block; /* Показываем на мобильных */
+    }
+    
+    .side-nav {
         position: fixed;
         top: 50%;
-        right: 0;
+        right: -250px; /* Скрыта за экраном */
         transform: translateY(-50%);
-        background: #2c3e50;
-        color: white;
-        padding: 15px 8px;
-        border-radius: 8px 0 0 8px;
-        cursor: pointer;
-        z-index: 999;
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        font-size: 14px;
-        font-weight: bold;
+        width: 260px;
+        height: auto;
+        max-height: 70vh;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        border-radius: 10px 0 0 10px;
+        overflow-y: auto;
     }
+    
+    .side-nav.active {
+        right: 0; /* Показываем при клике */
+    }
+}
     
     .nav-section {
         margin-bottom: 15px;
@@ -649,4 +676,5 @@ function toggleNav() {
 </script>
 </body>
 </html>
+
 
