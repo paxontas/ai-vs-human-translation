@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио переводчика: Сравнительный анализ</title>
+    <style>
+        /* Базовые стили */
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        /* Стили для блоков с текстом */
+        .text-block {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .original {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .ai-translation {
+            border-left: 4px solid #f39c12;
+        }
+
+        .human-translation {
+            border-left: 4px solid #27ae60;
+        }
+
+        /* Стили для комментариев */
+        .comments {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .comment-item {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 3px;
+            border-left: 3px solid #3498db;
+            scroll-margin-top: 150px;
+        }
+
+        /* Стили для интерактивных сносок */
+        .footnote-ref {
+            color: #e74c3c;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 0 2px;
+            transition: background-color 0.2s;
+            scroll-margin-top: 100px;
+            font-size: 0.8em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .back-to-top {
+            font-size: 0.8em;
+            color: #3498db;
+            text-decoration: none;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .back-to-top:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+
+        /* Метки для блоков */
+        .block-label {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .label-original { background: #e74c3c; color: white; }
+        .label-ai { background: #f39c12; color: white; }
+        .label-human { background: #27ae60; color: white; }
+
+        /* Плавная прокрутка для всего документа */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Боковая навигация */
+        .side-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            text-decoration: none;
+            color: #2c3e50;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            transform: scale(1);
+        }
+
+        .nav-item:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .nav-item.active {
+            background: #2c3e50;
+            color: white;
+            transform: scale(1.1);
+            font-weight: bold;
+        }
+
+        /* Стихи */
+        .poem {
+            font-style: italic;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        /* Стили для подразделов навигации */
+.sub-nav {
+    margin-left: 15px;
+    border-left: 2px solid #3498db;
+    padding-left: 8px;
+}
+
+.sub-nav-item {
+    display: block;
+    padding: 6px 10px;
+    margin: 3px 0;
+    text-decoration: none;
+    color: #7f8c8d;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    transform: scale(1);
+}
+
+.sub-nav-item:hover {
+    background: #ecf0f1;
+    color: #2c3e50;
+}
+
+.sub-nav-item.active {
+    background: #3498db;
+    color: white;
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+.nav-section {
+    margin-bottom: 10px;
+}
+.source-info {
+    background: #e8f4fd;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    border-left: 4px solid #3498db;
+    font-size: 0.9em;
+}
+
+.source-info h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+.source-info .indented-line {
+    margin-left: 85px;
+    text-indent: -20px;
+    margin-top: -8px;
+}
+
+.source-info .article-title,
+.source-info .authors-line {
+    margin-bottom: 0;
+}
+ 
+
+ .source-info .first-line {
+    margin-bottom: 0;
+}
+
+.source-info .indented-line {
+    margin-left: 85px;
+    text-indent: -20px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+}
+
+.article-block, .authors-block {
+    margin-bottom: 8px;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Боковая навигация -->
+        <!-- Боковая навигация -->
+    <nav class="side-nav">
+        <div class="nav-section">
+            <a href="#medical-text" class="nav-item">Медицинский перевод</a>
+            <div class="sub-nav">
+                <a href="#medical-original" class="sub-nav-item">Оригинал</a>
+                <a href="#medical-ai" class="sub-nav-item">GPT-5 Nano</a>
+                <a href="#medical-human" class="sub-nav-item">Аналитический</a>
+            </div>
+        </div>
+        
+        <div class="nav-section">
+            <a href="#fiction-text" class="nav-item">Художественный перевод</a>
+            <div class="sub-nav">
+                <a href="#fiction-original" class="sub-nav-item">Оригинал</a>
+                <a href="#fiction-ai" class="sub-nav-item">GPT-5 Nano</a>
+                <a href="#fiction-human" class="sub-nav-item">Аналитический</a>
+            </div>
+        </div>
+    </nav>
+
+    <h1>Портфолио переводчика</h1>
+    <p style="text-align: center; color: #666;">Сравнительный анализ перевода: AI vs аналитический подход</p>
+
+    <!-- Медицинский перевод -->
+    <section id="medical-text">
+    <h2>1. Медицинский перевод</h2>
+    <div class="source-info">
+        <h3>Источник оригинала:</h3>
+        
+        <div class="article-block">
+            <p class="first-line"><strong>Статья:</strong> "Risk Perceptions toward Chronic Kidney Disease and Self-Care Behaviour among People with Type 2 Diabetes Mellitus</p>
+            <p class="indented-line">Attending Follow-Ups in the Tertiary Care Hospitals"</p>
+        </div>
+        
+        <p><strong>Журнал:</strong> Open Access Library Journal (Scientific Research Publishing)</p>
+        
+        <div class="authors-block">
+            <p class="first-line"><strong>Авторы:</strong> Vannasith Phonlevong, Xayphasith Vollasin, Jonhly Penthady, Khamthavisouk Detthasack, Latsamee Oulay,</p>
+            <p class="indented-line">Khamtim Samountry, Orapin Laosee, Piyapong Janmaimool, Cheerawit Rattanapan.</p>
+        </div>
+        
+        <p><strong>Год:</strong> 2024 | <strong>DOI:</strong>  10.4236/oalib.1114173</p>
+        <p><em>Перевод выполнен с раздела "Materials and Methods" (Методика исследования)</em></p>
+    </div>
+
+        <div class="text-block original" id="medical-original">
+            <h3><span class="block-label label-original">ORIGINAL</span>Оригинал (английский)</h3>
+            <p>A quantitative face-to-face interview questionnaire with closed-ended questions was used to collect data. This standardized instrument is similar to those used in previous research that examined the risk perception of CKD and self-care behaviours among individuals diagnosed with Type 2 DM. The questionnaire comprised five sections, with a total of 50 items, of which five were completed by a research assistant using information from medical records, which included age (18 - 45 years, 46 - 60 years vs ≥ 61 years) sex (male vs female), occupation (civil servant vs retired/unemployed), family history of CKD (grandparents vs parents), knowledge related to the risk of CKD (yes vs no), perception towards the risk of CKD (strongly agree vs strongly disagree) and clinical measurement (poor vs good) were the independent variables. As for self-care behaviour categorized into drug adherence, diet, and individual lifestyle are classified as never to always (poor vs good).</p>
+            
+            <p>Validity was refined based on previously utilized questionnaires and operational definitions were crafted using structured formats. Initially composed in English, the questions were subsequently translated into the local language and validated by an expert. A reliability test was conducted through a pilot test study involving 30 individuals from both the outpatient and inpatient departments of diabetes at the military hospital. These individuals displayed varying levels of risk perception regarding CKD and self-care behaviour. The reliability scores, measured using Cronbach's Alpha, ranged from 0.75 to 0.86.</p>
+            
+            <p>To streamline the data collection process, IRB approval was requested from three public tertiary care hospitals involved in this study. Trained research assistants and data collectors introduced themselves and explained the purpose of the study to the respondents. Participants were also assured that their responses would be kept confidential. The researcher and the data collectors reviewed the statements in the consent form and obtained written consent from the participants. If the participants agreed to participate in the interview, it was conducted using a standard questionnaire designed to last no longer than 20 minutes. The researcher and data collectors ensured that participants understood they had the right to withdraw from the interview at any time if they felt uncomfortable.</p>
+        </div>
+
+        <div class="text-block ai-translation" id="medical-ai">
+            <h3><span class="block-label label-ai">AI</span>Машинный перевод (GPT-5 Nano)</h3>
+            <p>Количественное очное интервью с закрытыми вопросами использовалось для сбора данных. Этот стандартизированный инструмент аналогичен тем, что применялись в предыдущих исследованиях, изучавших восприятие риска хронической болезни почек (ХБП) и поведение по самоуходу у лиц с сахарным диабетом 2 типа (СД2). Анкета состояла из пяти разделов и включала в сумме 50 пунктов, из которых пять заполнил исследовательский ассистент на основе данных из медицинских записей, включая возраст (18–45 лет, 46–60 лет и ≥61 год), пол (мужской/женский), занятность (госслужащий vs пенсионер/безработный), семейную историю ХБП (у бабушек и дедушек vs у родителей), знание о риске ХБП (да/нет), восприятие риска ХБП (сильно согласен vs сильно не согласен) и клинические показатели (плохие vs хорошие) — независимые переменные. Что касается поведения по самоуходу, которое включает соблюдение приема лекарств, диету и образ жизни, оно классифицировалось по шкале от никогда до всегда (плохое vs хорошее).</p>
+            
+            <p>Валидность была уточнена на основе ранее используемых анкет, а операционные определения были разработаны с использованием структурированных форматов. Изначально вопросы были составлены на английском языке, затем переведены на местный язык и валидированы экспертом. Надёжность теста была оценена через пилотное исследование с участием 30 человек из амбулаторного и стационарного отделений диабета в военном госпитале. Эти лица демонстрировали различный уровень восприятия риска, связанного с хронической болезнью почек (ХБП), и поведения по уходу за собой. Оценки надёжности, рассчитанные по альфе Кронбаха (Cronbach's α), варьировались от 0,75 до 0,86.</p>
+            
+            <p>Для упрощения процесса сбора данных было запрошено одобрение IRB у трёх государственных больниц третьего уровня, участвующих в этом исследовании. Обученные помощники исследователей и сборщики данных представились и объяснили участникам цель исследования. Участникам также сообщили, что их ответы будут конфиденциальны. Исследователь и сборщики данных ознакомились с пунктами информированного согласия и получили письменное согласие участников. Если участники согласились принять участие в интервью, оно проводилось с использованием стандартного опросника, рассчитанного на продолжительность не более 20 минут. Исследователь и сборщики данных обеспечили, что участники понимают, что имеют право прекратить участие в интервью в любой момент, если они почувствуют дискомфорт.</p>
+        </div>
+
+        <div class="text-block human-translation" id="medical-human">
+            <h3><span class="block-label label-human">АНАЛИТИКА</span>Аналитический перевод</h3>
+            <p>Для сбора данных использовалась <a href="#comment1" class="footnote-ref" id="footnote-1"><sup>1</sup></a>анкета для очного интервью, основанная на количественной методологии. Этот <a href="#comment2" class="footnote-ref" id="footnote-2"><sup>2</sup></a>унифицированный метод аналогичен применяемым в предыдущих исследованиях, посвященных восприятию риска хронической болезни почек (ХБП) и <a href="#comment3" class="footnote-ref" id="footnote-3"><sup>3</sup></a>выполнению медицинских рекомендаций у пациентов с диагностированным сахарным диабетом 2-го типа (СД2). Анкета состояла из пяти разделов и содержала в общей сложности 50 пунктов. Пять из них, включавшие независимые переменные, были заполнены научным ассистентом на основе <a href="#comment4" class="footnote-ref" id="footnote-4"><sup>4</sup></a>медицинских данных: возраст (18–45 лет, 46–60 лет или старше 61 года), пол (мужской/женский), род занятий (госслужащий/пенсионер или безработный), семейный анамнез ХБП (у бабушек/дедушек или у родителей), <a href="#comment5" class="footnote-ref" id="footnote-5"><sup>5</sup></a>информированность о факторах риска ХБП (да/нет), <a href="#comment6" class="footnote-ref" id="footnote-6"><sup>6</sup></a>оценка личной угрозы ХБП (полностью согласен/полностью не согласен) и <a href="#comment7" class="footnote-ref" id="footnote-7"><sup>7</sup></a>полнота клинического наблюдения (неудовлетворительная/удовлетворительная). Что касается выполнения медицинских рекомендаций, которое было категоризировано как приверженность лечению, диете и индивидуальному образу жизни, то оно <a href="#comment8" class="footnote-ref" id="footnote-8"><sup>8</sup></a>оценивалось по шкале от «никогда» до «всегда» с последующей оценкой (низкий/высокий уровень).</p>
+            
+            <p><a href="#comment9" class="footnote-ref" id="footnote-9"><sup>9</sup></a>Методика исследования базировалась на ранее применявшихся опросниках, а <a href="#comment10" class="footnote-ref" id="footnote-10"><sup>10</sup></a>рабочие определения были сформулированы <a href="#comment11" class="footnote-ref" id="footnote-11"><sup>11</sup></a>в соответствии с общепринятыми методиками. Изначально составленные на английском языке вопросы затем были переведены на местный язык и <a href="#comment12" class="footnote-ref" id="footnote-12"><sup>12</sup></a>проверены экспертом. Надёжность теста оценивалась в ходе пилотного исследования с участием 30 пациентов амбулаторного и стационарного отделений диабетологии военного госпиталя. У этих пациентов <a href="#comment13" class="footnote-ref" id="footnote-13"><sup>13</sup></a>отмечался разный уровень восприятия риска ХБП и <a href="#comment14" class="footnote-ref" id="footnote-14"><sup>14</sup></a>соблюдения медицинских рекомендаций. Показатели надёжности, измеренные с помощью альфы Кронбаха, варьировались от 0,75 до 0,86.</p>
+            
+            <p>Для оптимизации процесса сбора данных было получено одобрение этического комитета трёх государственных больниц, оказывающих третичную медицинскую помощь, участвовавших в исследовании. Прошедшие подготовку ассистенты исследователей и интервьюеры представились респондентам и разъяснили им цели работы. Участникам также гарантировали конфиденциальность их ответов. Исследователь и интервьюеры зачитали положения формы информированного согласия и получили от участников их письменное согласие. В случае согласия на участие с респондентом проводили интервью по унифицированной анкете, рассчитанное не более чем на 20 минут. Исследователь и интервьюеры также убеждались, что участники понимают своё право прекратить интервью в любой момент в случае возникновения дискомфорта.</p>
+        </div>
+
+        <div class="comments">
+            <h3>Анализ ключевых решений перевода</h3>
+            
+            <div class="comment-item" id="comment1">
+                <p><a href="#comment1" class="footnote-ref"><sup>1</sup></a> <strong>«...анкета ... основанная на количественной методологии»</strong> — Прямой перевод «a quantitative... questionnaire» как «количественная анкета» может быть неочевиден. Данная формулировка явно указывает на методологию, сохраняя точность и улучшая понятность. <a href="#footnote-1" class="back-to-top">↑ назад к сноске 1</a></p>
+            </div>
+            <div class="comment-item" id="comment2">
+                <p><a href="#comment2" class="footnote-ref"><sup>2</sup></a> <strong>«унифицированный метод»</strong> — Более точный и стилистически верный вариант, чем «стандартизированный инструмент», который является калькой с английского. <a href="#footnote-2" class="back-to-top">↑ назад к сноске 2</a></p>
+            </div>
+            <div class="comment-item" id="comment3">
+                <p><a href="#comment3" class="footnote-ref"><sup>3</sup></a> <strong>«...выполнению медицинских рекомендаций...»</strong> — Выбранный термин является семантически точным эквивалентом для «self-care behaviours» в медицинском контексте, избегая разговорного «самоконтроль» и бытового «самообслуживание». <a href="#footnote-3" class="back-to-top">↑ назад к сноске 3</a></p>
+            </div>
+            <div class="comment-item" id="comment4">
+                <p><a href="#comment4" class="footnote-ref"><sup>4</sup></a> <strong>«медицинских данных»</strong> — Более ёмкий и профессиональный термин по сравнению с «медицинских записей» или «медицинских карт» в данном контексте. <a href="#footnote-4" class="back-to-top">↑ назад к сноске 4</a></p>
+            </div>
+            <div class="comment-item" id="comment5">
+                <p><a href="#comment5" class="footnote-ref"><sup>5</sup></a> <strong>«информированность о факторах риска ХБП»</strong> — Более глубокий и точный перевод «knowledge related to the risk of CKD», передающий не просто «знание», а именно осведомлённость о конкретных факторах. <a href="#footnote-5" class="back-to-top">↑ назад к сноске 5</a></p>
+            </div>
+            <div class="comment-item" id="comment6">
+                <p><a href="#comment6" class="footnote-ref"><sup>6</sup></a> <strong>«оценка личной угрозы ХБП»</strong> — Удачный перевод «perception towards the risk of CKD», который передаёт субъективное восприятие риска самим пациентом. <a href="#footnote-6" class="back-to-top">↑ назад к сноске 6</a></p>
+            </div>
+            <div class="comment-item" id="comment7">
+                <p><a href="#comment7" class="footnote-ref"><sup>7</sup></a> <strong>«...полнота клинического наблюдения (неудовлетворительная/удовлетворительная)»</strong> — Перевод «clinical measurement (poor vs good)» является интерпретацией, основанной на контексте. Прямой перевод «клинические измерения» был бы некорректным, так как параметры в этом разделе — это данные из медицинских карт. Предложенный вариант точнее передаёт смысл о полноте и качестве имеющихся данных о наблюдении за пациентом. <a href="#footnote-7" class="back-to-top">↑ назад к сноске 7</a></p>
+            </div>
+            <div class="comment-item" id="comment8">
+                <p><a href="#comment8" class="footnote-ref"><sup>8</sup></a> <strong>«...оценивалось по шкале от «никогда» до «всегда» с последующей оценкой (низкий/высокий уровень)»</strong> — Эта конструкция заменяет дословный и стилистически неудачный перевод «...are classified as never to always (poor vs good)». Она точно объясняет методологию: сбор данных по частотной шкале с последующим преобразованием в бинарную переменную для анализа. <a href="#footnote-8" class="back-to-top">↑ назад к сноске 8</a></p>
+            </div>
+            <div class="comment-item" id="comment9">
+                <p><a href="#comment9" class="footnote-ref"><sup>9</sup></a> <strong>«Методика исследования базировалась на ранее применявшихся опросниках»</strong> — Звучит естественно для научного стиля, в отличие от кальки «Валидность была уточнена на основе ранее используемых анкет». <a href="#footnote-9" class="back-to-top">↑ назад к сноске 9</a></p>
+            </div>
+            <div class="comment-item" id="comment10">
+                <p><a href="#comment10" class="footnote-ref"><sup>10</sup></a> <strong>«рабочие определения»</strong> — Более устоявшийся термин в русскоязычной научной литературе по сравнению с калькой «операционные определения». <a href="#footnote-10" class="back-to-top">↑ назад к сноске 10</a></p>
+            </div>
+            <div class="comment-item" id="comment11">
+                <p><a href="#comment11" class="footnote-ref"><sup>11</sup></a> <strong>«в соответствии с общепринятыми методиками»</strong> — Убирает бессмысленную кальку «с использованием структурированных форматов», которая не несёт ясного смысла для русскоязычного читателя. <a href="#footnote-11" class="back-to-top">↑ назад к сноске 11</a></p>
+            </div>
+            <div class="comment-item" id="comment12">
+                <p><a href="#comment12" class="footnote-ref"><sup>12</sup></a> <strong>«проверены экспертом»</strong> — Ясный и понятный вариант, заменяющий канцелярское «валидированы». <a href="#footnote-12" class="back-to-top">↑ назад к сноске 12</a></p>
+            </div>
+            <div class="comment-item" id="comment13">
+                <p><a href="#comment13" class="footnote-ref"><sup>13</sup></a> <strong>«отмечался разный уровень»</strong> — Более плавная и литературная конструкция по сравнению с буквальным «демонстрировали различный уровень». <a href="#footnote-13" class="back-to-top">↑ назад к сноске 13</a></p>
+            </div>
+            <div class="comment-item" id="comment14">
+                <p><a href="#comment14" class="footnote-ref"><sup>14</sup></a> <strong>«соблюдения медицинских рекомендаций»</strong> — Унифицирует терминологию с первым абзацем, сохраняя точность и обеспечивая целостность текста. <a href="#footnote-14" class="back-to-top">↑ назад к сноске 14</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Художественный перевод -->
+    <section id="fiction-text">
+    <h2>2. Художественный перевод</h2>
+    <div class="source-info">
+        <h3>Источник оригинала:</h3>
+        <p><strong>Рассказ:</strong> "First star I see tonight"</p>
+        <p><strong>Автор:</strong> British Council</p>
+        <p><strong>Платформа:</strong> LearnEnglish - Story zone</p>
+        <p><strong>Жанр:</strong> Научная фантастика</p>
+    </div>
+
+       <div class="text-block original" id="fiction-original">
+            <h3><span class="block-label label-original">ORIGINAL</span>Оригинал (английский)</h3>
+            <p>Dr Tomas Streyer looked around the control room at his team of scientists and engineers. He was pretending to be calm, but he was both excited and terrified. The next few minutes would be the starting point of years more research towards understanding the secrets of how the universe began.</p>
+            <p>He looked out of the window at the beautiful blue summer sky and took a deep breath.</p>
+            <p>'Ready,' he said, and pressed the first button, bringing to life the complicated computers and machines around them.</p>
+            <p>'Set,' he said, and pressed the second button, switching on the huge particle accelerator that lay in a huge underground laboratory, deep beneath the towns and fields of Switzerland.</p>
+            <p>'Go,' he said, at exactly twelve o'clock, and pressed the final button.</p>
+            <p>For a second, everything went absolutely black, as if he had gone blind. Tomas cried out in shock, but the lights were already on again. Whatever that was, it was not supposed to have happened.</p>
+            <p>'Everybody check the systems!' he ordered, but nothing seemed to be wrong with them. The particle accelerator was working, just as he had hoped it would.</p>
+            <p>'Look outside,' said Tomas's assistant in a frightened voice.</p>
+            <p>Instead of the perfect summer day of five minutes ago, the sky was darker than the blackest night. Not only had the sun disappeared, there weren't even any stars.</p>
+            <p>People were shouting and screaming, calling their families on the telephone, afraid they had all suddenly disappeared too. Tomas ignored their noise. He sat at the main computer and started reading the data from his experiment. Nothing there explained what was happening. He rushed for the exit, his team running behind him until they were all outside the laboratory building.</p>
+            <p>Everyone else in the research centre was outside, panicking and confused. They were using the screens and torches on their mobile phones to see where they were going, waving them around like giant fireflies.</p>
+            <p>Several people got in their cars and turned on the headlights, driving them to the entrance to make a small area of brightness in the dark for everybody to crowd together. When the automatic street lights turned on, some people cheered, but most of them were still frightened.</p>
+            <p>Then, almost twenty minutes after Tomas had started his experiment, without warning the sun reappeared in the sky, warm and yellow, and the black sky turned blue again. Everyone started laughing and dancing around, and Tomas breathed a sigh of relief.</p>
+            <p>But later, hours later, when the real night fell again, no one was celebrating. Because although the moon rose as usual, there was not a star to be seen.</p>
+            <p>...</p>
+            <p>No one wanted to know what Tomas had intended to happen or what his research had actually been about. What did that matter? All they cared about was what had happened. He had stolen all the stars – or that's what the newspapers said he had done. And when they put him on trial before the International Criminal Court, that's what they charged him with: stealing the stars.</p>
+            <p>He pleaded 'Not guilty'.</p>
+            <p>'Well, if you didn't steal the stars, Dr Streyer,' said the lawyer for the prosecution, 'what did you do?'</p>
+            <p>'As far as my experiment is concerned,' said Tomas, 'it didn't seem to do anything. The machine was working, that's all.'</p>
+            <p>'Taking the stars from the sky seems like nothing to you?' The lawyer looked around at the audience in the court. 'No one here would agree. No one in the world.'</p>
+            <p>'That's not what I meant,' said Tomas. 'What I know is that when the experiment started, there were suddenly no photons in the test room.'</p>
+            <p>'What? Photons? We aren't all scientists here! Speak plain English, Dr Streyer!'</p>
+            <p>'Light,' said Tomas. 'I mean, for just a moment it was as if there was no light in our laboratory, and then we saw it was dark outside as well until the daylight returned to normal.'</p>
+            <p>'Normal, Dr Streyer? Except for when …' – the lawyer checked his notes – '... the sun went out for exactly 16 minutes and 40 seconds? Oh yes, the rest of the day was very normal. The night, on the other hand, hasn't been normal ever since.'</p>
+            <p>Tomas nodded sadly. 'I know. But you must believe me, nothing I did could possibly have removed the stars from existence!'</p>
+            <p>'So neither you nor your experiment stole the stars from us,' said the lawyer.</p>
+            <p>'No,' Tomas said.</p>
+            <p>'You just made it so that we can't see them any more.'</p>
+            <p>After a long pause, Tomas sighed. 'Yes.'</p>
+            <p>The lawyer raised an eyebrow. 'How is that any different?'</p>
+            <p>Tomas didn't have an answer, not one anyone would understand anyway, let alone believe. He had a theory, but it would take years to prove it.</p>
+            <p>Instead, he changed his plea to 'guilty'.</p>
+            <p>...</p>
+            <p>The trial gave the world someone to blame for what it had lost, but sending Tomas to prison for years wouldn't change anything. Instead, at the end of their symbolic trial, they gave him a symbolic punishment.</p>
+            <p>Tomas was sentenced to work at the abandoned Extremely Large Telescope in Paranal, Chile. Nobody looked at the night sky now. No tourists climbed high mountains to see the edges of our galaxy, and no scientists asked for money to study the empty sky. All that passed through the night sky was the lonely moon, a handful of planets and the occasional comet. Looking up made people depressed.</p>
+            <p>Tomas thought it was fair. It was right that he should be punished, and working as an astronomer had become almost the same as prison. After a few years the world forgot about him, or at least decided to leave him alone. Every evening he would watch the sun go down. It vanished below the horizon exactly eight minutes and twenty seconds after it actually descended below the curve of the Earth. The laws of physics remained the same, much to Tomas's daily relief. Light still travelled at the same speed as it always had. He hadn't changed reality that much or, at least, he hoped he hadn't. If light travels at a certain speed, he thought, perhaps absence of light travels at the same speed.</p>
+            <p>Of course, there was no way to prove his theory. Not yet. And, alone in the observatory, Tomas had nobody to share it with anyway.</p>
+            <p>...</p>
+            <p>High in the mountains of Chile, Tomas continued to watch the night, his enormous telescope pointing towards a particular point of the sky, even though it was always just as empty as every other part. And each day, as the sun went down, he thought of the song his parents sang to him as a child:</p>
+            
+            <div class="poem">
+                Star light, star bright,<br>
+                First star I see tonight,<br>
+                I wish I may, I wish I might,<br>
+                Have the wish I wish tonight.
+            </div>
+            
+            <p>For 1,596 black nights – nearly four and a half years – there was no change to the night sky. But that was OK. It didn't disprove Tomas's theory, it supported it. Tomas thought about the absence of light he had created and he imagined it like a wave, passing the sun and continuing out towards the edge of our galaxy and beyond. It would take 1,596 nights to pass the nearest star, and another 1,596 nights for that star's light to reach the Earth again … If the wave of darkness existed at all, of course. If his calculations were correct. If he was wrong, the stars really were gone forever.</p>
+            <p>...</p>
+            <p>And then one night, another 1,596 nights later, almost nine years after the disaster, Tomas looked up from his telescope and saw Alpha Centauri twinkling back at him.</p>
+            <p>The first star.</p>
+            <p>He wiped the tears from his eyes and made a wish. Billions of other people's wishes followed right after it.</p>
+        </div>
+
+        <div class="text-block ai-translation" id="fiction-ai">
+            <h3><span class="block-label label-ai">AI</span>Машинный перевод (GPT-5 Nano)</h3>
+            <p>Доктор Томас Стрейер оглядел контрольную комнату своей команды учёных и инженеров. Он делал вид, что сохраняет спокойствие, но внутри был взволнован и напуган. Следующие несколько минут стали бы точкой отправления для многолетних исследований, направленных на понимание секретов того, как началось существование Вселенной.</p>
+            <p>Он посмотрел в окно на прекрасное синее летнее небо и глубоко вздохнул.</p>
+            <p>«Готовы», — сказал он и нажал первую кнопку, приводя в движение сложные компьютеры и машины вокруг.</p>
+            <p>«На старт», — сказал он и нажал вторую кнопку, включив огромный ускоритель частиц, лежащий в глубокой подземной лаборатории, под городами и полями Швейцарии.</p>
+            <p>«Поехали», — сказал он ровно в двенадцать часов и нажал последнюю кнопку.</p>
+            <p>На секунду всё погрузилось во тьму, как будто он ослеп. Томас вскрикнул от шока, но огни снова загорелись. Что бы это ни было, происходить такое не должно было.</p>
+            <p>«Все проверьте системы!» — распорядился он, но казалось, что с ними ничего не так. Ускоритель частиц работал, как и должен был.</p>
+            <p>«Посмотри наружу», — сказал помощник Томаса испуганным голосом.</p>
+            <p>Вместо идеального летнего дня, который был всего пять минут назад, небо стало темнее самой чёрной ночи. Не только солнца не стало, звёзд не было и вовсе.</p>
+            <p>Люди кричали и орали, звонили своим семьям по телефону, боясь, что все они тоже внезапно исчезли. Томас проигнорировал их шум. Он сел за главный компьютер и начал читать данные своего эксперимента. Ничего в них не объясняло, что происходит. Он бросился к выходу, его команда бежала за ним, пока все не вышли на улицу лабораторного здания.</p>
+            <p><sup>1</sup>Все остальные в научном центре оказались на улице, в панике и замешательстве. <sup>2</sup>Они смотрели на происходящее через экраны и фонарики на своих мобильных телефонах, размахивая ими, как гигантскими светлячками.</p>
+            <p>Несколько человек сели в свои автомобили и включили головной свет, подвозя их к входу, чтобы создать в темноте небольшую яркую зону, в которой все могли собраться толпой. Когда включились автоматические уличные фонари, некоторые радовались, но большинство по-прежнему было напугано.</p>
+            <p>Затем, примерно через двадцать минут после начала эксперимента Томаса, без предупреждения солнце снова поднялось в небе, тёплое и жёлтое, и чёрное небо снова стало голубым. Все начали смеяться и танцевать вокруг, и Томас вздохнул с облегчением.</p>
+            <p>Но позже, спустя часы, когда снова наступила настоящая ночь, никто не праздновал. Потому что, хотя луна поднималась как обычно, ни одной звезды не было видно.</p>
+            <p>...</p>
+            <p>Никто не хотел знать, что Томас предполагал сделать или чем на самом деле было его исследование. Но какое это имело значение? Единственное, что их интересовало, — что случилось. Он якобы «украл» все звезды — или так говорили газеты. И когда их привели на суд в Международный уголовный суд, именно это им и инкриминировали ему: кража звёзд.</p>
+            <p>Он заявил: «Не виновен».</p>
+            <p>«Ну, если вы не украли звёзды, доктор Стрейер, — сказал прокурор, — что же вы сделали?»</p>
+            <p>«Что касается моего эксперимента, — ответил Томас, — казалось, что он ничего не сделал. <sup>3</sup>Машина работала, вот и всё.»</p>
+            <p>«Забирать звёзды с неба — это ничего для вас?» Прокурор оглядел зал суда. «Никто здесь не согласится. Никто в мире.»</p>
+            <p>«Это не то, что я имел в виду», — сказал Томас. «То, что я знаю, таково: когда начался эксперимент, внезапно в испытательной комнате не стало фотонов.»</p>
+            <p>«Что? Фотонов? Мы не все здесь учёные! Говорите простым языком, доктор Стрейер!»</p>
+            <p>«Свет», — сказал Томас. «Я имею в виду, что вслух было так: в нашей лаборатории на мгновение не было света, и затем стало темно и за пределами, пока дневной свет не вернулся в норму.»</p>
+            <p>«Нормальным, доктор Стрейер? Кроме того, когда…» — прокурор проверил заметки — «... солнце погасло ровно на 16 минут и 40 секунд? О да, остальная часть дня была очень нормальной. Ночь, с другой стороны, с тех пор не была нормальной.»</p>
+            <p>Томас печально кивнул. «Я знаю. Но поверьте мне, ничто из того, что я сделал, не могло удалить звёзды из существования.»</p>
+            <p>«Значит, ни вы, ни ваш эксперимент не украли звёзды у нас», — сказала прокурор.</p>
+            <p>«Нет», — ответил Томас.</p>
+            <p>«Вы просто заставили нас больше не видеть их.»</p>
+            <p>После долгой паузы Томас вздохнул. «Да.»</p>
+            <p><sup>4</sup>«Бровь у прокурора поднялась.» Как это отличается?»</p>
+            <p>У Томаса не было ответа, не то чтобы кто-то мог понять его ответ, не говоря уже о вере в него. У него была теория, но её нужно было доказывать годы.</p>
+            <p>В итоге он изменил свою позицию на «виновен».</p>
+            <p>...</p>
+            <p>Процесс дал миру кого-то, за кого можно обвинить в потере, но отправка Томаса в тюрьму на годы ничего бы не изменила. В конце их символического суда им вынесли символическое наказание.</p>
+            <p>Томаса приговорили к работе в заброшенном Экстремально большом телескопе в Паранале, Чили. Теперь никто не смотрел на ночное небо. Ни туристы, поднимаясь в горы, чтобы увидеть края нашей галактики, ни учёные, просящие деньги на изучение пустого неба. Единственный свет, который проникал в ночное небо, — одинокий месяц, немного планет и редкая комета. Смотреть вверх приводило людей в уныние.</p>
+            <p>Томас считал это справедливым. Право на наказание и работа астрономом почти превратились в тюрьму. <sup>5</sup>Через несколько лет мир забывал о нём, или, по крайней мере, решил оставить его в покое. Каждым вечером он видел, как солнце садится. Оно исчезало за горизонтом ровно через восемь минут и двадцать секунд после того, как на самом деле опускалось за кривизной Земли. Законы физики оставались прежними, чему Томас ежедневно радовался. Свет всё ещё распространялся со скоростью, которую он всегда знал. Он не изменил реальность так сильно, или по крайней мере надеялся, что не изменил. Если свет движется с определённой скоростью, подумал он, возможно отсутствие света движется той же скоростью.</p>
+            <p>Разумеется, доказать его теорию было невозможно. Пока что. И, находясь один в обсерватории, Томас не было с кем её разделить.</p>
+            <p>...</p>
+            <p>Высоко в горах Чили Томас продолжал смотреть ночь, его огромный телескоп был направлен на конкретную точку неба, хотя она всегда была такой же пустой, как и любая другая. И каждый день, когда солнце садилось, он думал о песне, которую его родители пели ему в детстве:</p>
+            
+            <div class="poem">
+                Звёздный свет, звезда яркая,<br>
+                Первая звезда, которую вижу сегодня ночью,<br>
+                Хочу, чтобы мне повезло;<br>
+                хочу, чтобы сбылось моё желание сегодня ночью.
+            </div>
+            
+            <p>За 1 596 черных ночей — почти четыре с половиной года — не было изменения в ночном небе. Но это было нормально. Это не опровергло бы теорию Томаса, она её поддерживала. Томас думал о отсутствии света, которое он создал, и представлял его как волну, которая прошла мимо солнца и ушла дальше к краю нашей галактики и за её пределы. Чтобы волна тьмы дошла до ближайшей звезды, потребовалось бы 1 596 ночей, и ещё 1 596 ночей — чтобы свет этой звезды достиг Земли... Если волна существовала вообще, конечно. Если его расчёты верны. Если он был неправ, звёзды действительно исчезли бы навсегда.</p>
+            <p>...</p>
+            <p>И затем однажды ночью, спустя ещё 1 596 ночей, почти через девять лет после катастрофы, Томас поднял глаза от телескопа и увидел, как Альфа Центавра мерцает ему в ответ.</p>
+            <p>Первая звезда.</p>
+            <p>Он вытер слёзы и загадав желание. Следовали миллиарды желаний других людей.</p>
+        </div>
+
+       <div class="text-block human-translation" id="fiction-human">
+    <h3><span class="block-label label-human">АНАЛИТИКА</span>Аналитический перевод</h3>
+            <p>Доктор Томас Стрейер обвёл взглядом командный центр, где собрались его учёные и инженеры. Внешне он старался сохранять спокойствие, но внутри бушевала смесь возбуждения и ужаса. Следующие несколько минут должны были положить начало многолетним исследованиям, цель которых — проникнуть в тайны рождения Вселенной.</p>
+            <p>Он взглянул в окно на прекрасное голубое летнее небо и глубоко вздохнул.</p>
+            <p>«Готовы», — сказал он и нажал первую кнопку, приводя в действие сложные компьютеры и <a href="#comment15" class="footnote-ref" id="footnote-15"><sup>1</sup></a>аппаратуру вокруг.</p>
+            <p>«На старт», — сказал он и нажал вторую кнопку, включив гигантский ускоритель частиц, скрытый в недрах подземной лаборатории под швейцарскими городами и полями.</p>
+            <p>«Поехали», — произнёс он ровно в полдень и нажал последнюю кнопку.</p>
+            <p>На секунду всё погрузилось в абсолютную тьму, словно он ослеп. Томас вскрикнул от неожиданности, но свет уже вернулся. Что бы это ни было, такого происходить не должно было.</p>
+            <p>«Всем проверить системы!» — скомандовал он, но, казалось, с оборудованием всё в порядке. Ускоритель частиц работал именно так, как он и рассчитывал.</p>
+            <p>«Посмотрите на улицу», — испуганно прошептал помощник Томаса.</p>
+            <p>Вместо идеального летнего дня, что был всего пять минут назад, небо стало темнее самой тёмной ночи. Исчезло не только солнце — не было видно ни единой звезды.</p>
+            <p>Люди кричали и звонили своим семьям, опасаясь, что те тоже бесследно исчезли. Томас игнорировал нарастающую панику. Он сел за главный компьютер и начал изучать данные эксперимента. Ничто не могло объяснить происходящего. Он бросился к выходу, и вся команда последовала за ним, пока они не оказались снаружи у здания лаборатории.</p>
+            <p><a href="#comment16" class="footnote-ref" id="footnote-16"><sup>2</sup></a>Весь остальной персонал исследовательского центра уже был на улице, охваченный паникой и недоумением. <a href="#comment17" class="footnote-ref" id="footnote-17"><sup>3</sup></a>Они освещали себе путь экранами и фонариками мобильных телефонов, размахивая ими, словно гигантскими светлячками.</p>
+            <p>Несколько человек сели в машины, включили фары и подъехали ко входу, создав небольшой островок света в кромешной тьме, где могла собраться вся толпа. Когда зажглись автоматические уличные фонари, некоторые принялись ликовать, но большинство по-прежнему пребывало в страхе.</p>
+            <p>Затем, спустя примерно двадцать минут после начала эксперимента, без всякого предупреждения солнце вновь появилось на небе, тёплое и жёлтое, а чёрное небо вмиг стало голубым. Все принялись смеяться и танцевать, а Томас с облегчением выдохнул.</p>
+            <p>Но позже, когда спустя часы вновь наступила ночь, праздновать было уже некому. Потому что, хотя луна взошла как обычно, на небе не было видно ни единой звезды.</p>
+            <!-- ... остальной текст аналитического перевода ... -->
+            <p>Высоко в горах Чили Томас продолжал всматриваться в ночь, его огромный телескоп был нацелен на определённую точку неба, хотя она оставалась такой же пустой, как и все остальные. И каждый день, когда солнце уходило за горизонт, он вспоминал песню, которую родители пели ему в детстве:</p>
+            
+            <div class="poem">
+                <a href="#comment20" class="footnote-ref" id="footnote-20"><sup>6</sup></a>Звёздочка, светись,<br>
+                Ясная, явись.<br>
+                Первая звезда, загадаю я тогда,<br>
+                Чтобы сбылась мечта.
+            </div>
+            
+            <p>За 1596 тёмных ночей — почти четыре с половиной года — на ночном небе не произошло никаких изменений. Но это было нормально. Это не опровергало теорию Томаса, а подтверждало её. Томас размышлял об отсутствии света, которое он создал, и представлял его себе в виде волны, прошедшей мимо Солнца и устремившейся к краю нашей галактики и дальше. Чтобы этой волне тьмы достичь ближайшей звезды, требовалось 1596 ночей, и ещё столько же — чтобы свет этой звезды вновь достиг Земли… Если, конечно, волна тьмы вообще существовала. Если его расчёты были верны. Если же он ошибался, звёзды действительно исчезли навсегда.</p>
+            <p>...</p>
+            <p>И вот однажды ночью, спустя ещё 1596 ночей, почти через девять лет после катастрофы, Томас оторвал взгляд от телескопа и увидел, как Альфа Центавра подмигивает ему в ответ.</p>
+            <p>Первая звезда.</p>
+            <p>Он смахнул слёзы и загадал желание. Вслед за ним свои желания загадали миллиарды других людей.</p>
+        </div>
+
+        <div class="comments">
+            <h3>Анализ ключевых решений перевода</h3>
+            
+            <div class="comment-item" id="comment15">
+                <p><a href="#comment15" class="footnote-ref"><sup>1</sup></a> <strong>«...аппаратуру...»</strong> — Более точный термин для описания сложного научного оборудования по сравнению с общим словом «машины», которое может ассоциироваться с промышленным оборудованием. <a href="#footnote-15" class="back-to-top">↑ назад к сноске 1</a></p>
+            </div>
+
+            <div class="comment-item" id="comment16">
+                <p><a href="#comment16" class="footnote-ref"><sup>2</sup></a> <strong>«Весь остальной персонал исследовательского центра...»</strong> — Более формальный и стилистически выверенный вариант по сравнению с разговорным «все остальные в научном центре». <a href="#footnote-16" class="back-to-top">↑ назад к сноске 2</a></p>
+            </div>
+
+            <div class="comment-item" id="comment17">
+                <p><a href="#comment17" class="footnote-ref"><sup>3</sup></a> <strong>«Они освещали себе путь экранами и фонариками...»</strong> — Более точный перевод оригинала «using the screens and torches... to see where they were going», передающий функциональность действий, а не просто наблюдение. <a href="#footnote-17" class="back-to-top">↑ назад к сноске 3</a></p>
+            </div>
+
+            <div class="comment-item" id="comment18">
+                <p><a href="#comment18" class="footnote-ref"><sup>4</sup></a> <strong>«Прокурор ехидно приподнял бровь. "И это, по-вашему, не воровство?"»</strong> — Агрессивно-саркастический вариант, наиболее точно передающий смысл оригинала «How is that any different?». Прокурор прямо называет вещи своими именами, сводя теорию Томаса к абсурду с точки зрения обывателя. <a href="#footnote-18" class="back-to-top">↑ назад к сноске 4</a></p>
+            </div>
+
+            <div class="comment-item" id="comment19">
+                <p><a href="#comment19" class="footnote-ref"><sup>5</sup></a> <strong>«...оставил его в одиночестве.»</strong> — Более точный перевод в контексте, где речь идёт о забвении и изоляции, а не о прекращении беспокойства. <a href="#footnote-19" class="back-to-top">↑ назад к сноске 5</a></p>
+            </div>
+
+            <div class="comment-item" id="comment20">
+                <p><a href="#comment20" class="footnote-ref"><sup>6</sup></a> <strong>Адаптация песни</strong> — Сохранён гипнотический, почти детский ритм оригинала. Использованы естественные для русской поэтической традиции слова («звёздочка», «ясная»). Передана суть — загадывание желания на первую звезду, что соответствует культурному коду русскоязычного читателя. <a href="#footnote-20" class="back-to-top">↑ назад к сноске 6</a></p>
+            </div>
+        </div>
+    </section>
+
+        <script>
+        // JavaScript для активной навигации
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section, .text-block');
+            const navItems = document.querySelectorAll('.nav-item, .sub-nav-item');
+            
+            // Функция для определения активного раздела
+            function setActiveSection() {
+                let current = '';
+                const scrollPos = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            // Слушаем событие прокрутки
+            window.addEventListener('scroll', setActiveSection);
+            
+            // Инициализация при загрузке
+            setActiveSection();
+        });
+    </script>
+</body>
+</html>
