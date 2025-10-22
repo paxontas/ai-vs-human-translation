@@ -274,27 +274,42 @@
     transform: translateY(-50%);
     background: #2c3e50;
     color: white;
-    padding: 15px 8px;
+    padding: 12px 6px;
     border-radius: 8px 0 0 8px;
     cursor: pointer;
     z-index: 999;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
-    display: none; /* Скрыта на десктопе */
+    display: none;
+    border: none;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+/* Убираем текст, оставляем только иконку */
+.nav-toggle::before {
+    content: "≡";
+    writing-mode: horizontal-tb;
+    font-size: 16px;
 }
 
 /* Показываем только на мобильных */
 @media (max-width: 768px) {
     .nav-toggle {
-        display: block; /* Показываем на мобильных */
+        display: block;
+        right: -20px; /* Скрываем за экраном, оставляя видимой часть */
+    }
+    
+    .nav-toggle:hover {
+        right: 0; /* При наведении показываем полностью */
     }
     
     .side-nav {
         position: fixed;
         top: 50%;
-        right: -250px; /* Скрыта за экраном */
+        right: -280px; /* Полностью скрыта */
         transform: translateY(-50%);
         width: 260px;
         height: auto;
@@ -674,7 +689,9 @@ function toggleNav() {
     nav.classList.toggle('active');
 }
 </script>
+    <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
