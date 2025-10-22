@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио переводчика: Сравнительный анализ</title>
     <style>
         /* Базовые стили */
+
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
@@ -239,6 +241,63 @@
 
 .article-block, .authors-block {
     margin-bottom: 8px;
+}
+
+
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .text-block {
+        padding: 10px;
+        margin: 10px 0;
+    }
+    
+    .side-nav {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin: 20px 0;
+        width: 100%;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .side-nav {
+        display: none; /* Скрываем на мобильных */
+    }
+    
+    /* Или делаем горизонтальной */
+    .side-nav {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .nav-item {
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .sub-nav {
+        display: none; /* Скрываем подменю на мобильных */
+    }
 }
 
     </style>
