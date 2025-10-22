@@ -384,6 +384,15 @@
     .side-nav {
         max-height: 85vh;
         width: 240px;
+        right: -280px; /* Добавьте эту строку */
+    }
+    
+    .side-nav.active {
+        right: 0; /* Добавьте эту строку */
+    }
+    
+    .side-nav.active ~ .nav-toggle {
+        right: 240px; /* Добавьте эту строку */
     }
 }
 
@@ -791,6 +800,7 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
