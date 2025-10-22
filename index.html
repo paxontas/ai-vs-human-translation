@@ -267,6 +267,7 @@
 
         /* Выдвижная навигация для мобильных */
         /* Выдвижная навигация для мобильных (все ориентации) */
+/* Выдвижная навигация для мобильных */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -312,12 +313,10 @@
         right: 260px;
     }
     
-    /* Меняем иконку при открытии */
     .side-nav.active ~ .nav-toggle::before {
         content: "✕";
     }
     
-    /* Кнопка закрытия внутри меню */
     .nav-close {
         position: absolute;
         top: 50%;
@@ -356,17 +355,17 @@
         display: block;
         margin-left: 10px;
     }
+}
+
+/* Отдельно для горизонтальной ориентации */
+@media (max-width: 768px) and (orientation: landscape) {
+    .side-nav {
+        max-height: 85vh;
+        width: 240px;
+    }
     
-    /* Адаптация для горизонтальной ориентации */
-    @media (orientation: landscape) {
-        .side-nav {
-            max-height: 85vh; /* Чуть выше в горизонтальной */
-            width: 240px; /* Чуть уже */
-        }
-        
-        .side-nav.active ~ .nav-toggle {
-            right: 240px; /* Подгоняем под новую ширину */
-        }
+    .side-nav.active ~ .nav-toggle {
+        right: 240px;
     }
 }
     </style>
@@ -751,6 +750,7 @@
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
