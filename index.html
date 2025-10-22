@@ -375,24 +375,27 @@
     <!-- Боковая навигация -->
         <!-- Боковая навигация -->
     <nav class="side-nav">
-        <div class="nav-section">
-            <a href="#medical-text" class="nav-item">Медицинский перевод</a>
-            <div class="sub-nav">
-                <a href="#medical-original" class="sub-nav-item">Оригинал</a>
-                <a href="#medical-ai" class="sub-nav-item">GPT-5 Nano</a>
-                <a href="#medical-human" class="sub-nav-item">Аналитический</a>
-            </div>
+    <!-- Добавляем кнопку закрытия -->
+    <div class="nav-close" onclick="toggleNav()" title="Закрыть меню"></div>
+    
+    <div class="nav-section">
+        <a href="#medical-text" class="nav-item">Медицинский перевод</a>
+        <div class="sub-nav">
+            <a href="#medical-original" class="sub-nav-item">Оригинал</a>
+            <a href="#medical-ai" class="sub-nav-item">GPT-5 Nano</a>
+            <a href="#medical-human" class="sub-nav-item">Аналитический</a>
         </div>
-        
-        <div class="nav-section">
-            <a href="#fiction-text" class="nav-item">Художественный перевод</a>
-            <div class="sub-nav">
-                <a href="#fiction-original" class="sub-nav-item">Оригинал</a>
-                <a href="#fiction-ai" class="sub-nav-item">GPT-5 Nano</a>
-                <a href="#fiction-human" class="sub-nav-item">Аналитический</a>
-            </div>
+    </div>
+    
+    <div class="nav-section">
+        <a href="#fiction-text" class="nav-item">Художественный перевод</a>
+        <div class="sub-nav">
+            <a href="#fiction-original" class="sub-nav-item">Оригинал</a>
+            <a href="#fiction-ai" class="sub-nav-item">GPT-5 Nano</a>
+            <a href="#fiction-human" class="sub-nav-item">Аналитический</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <h1>Портфолио переводчика</h1>
     <p style="text-align: center; color: #666;">Сравнительный анализ перевода: AI vs аналитический подход</p>
@@ -743,6 +746,7 @@
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
