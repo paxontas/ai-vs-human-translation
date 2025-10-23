@@ -287,6 +287,7 @@
 
         /* Выдвижная навигация для мобильных */
         /* Выдвижная навигация для мобильных устройств */
+/* Выдвижная навигация для мобильных устройств */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -311,21 +312,11 @@
     }
     
     .side-nav {
-        position: fixed;
-        top: 50%;
-        right: -280px; /* Скрыта за экраном */
-        transform: translateY(-50%);
-        width: 260px;
-        height: auto;
-        max-height: 70vh;
-        transition: right 0.3s ease;
-        z-index: 1000;
-        border-radius: 10px 0 0 10px;
-        overflow-y: auto;
+        right: -280px !important; /* Скрыта за экраном */
     }
     
     .side-nav.active {
-        right: 0; /* Показывается при активации */
+        right: 0 !important; /* Показывается при активации */
     }
     
     .side-nav.active ~ .nav-toggle {
@@ -334,27 +325,6 @@
     
     .side-nav.active ~ .nav-toggle::before {
         content: "✕";
-    }
-    
-    .nav-close {
-        display: block; /* Убедитесь, что кнопка закрытия видна */
-    }
-}
-
-/* Для горизонтальной ориентации на мобильных */
-@media (max-width: 768px) and (orientation: landscape) {
-    .side-nav {
-        max-height: 85vh;
-        width: 240px;
-        right: -280px; /* ОБЯЗАТЕЛЬНО скрыта */
-    }
-    
-    .side-nav.active {
-        right: 0; /* Показывается при активации */
-    }
-    
-    .side-nav.active ~ .nav-toggle {
-        right: 240px;
     }
 }
 
@@ -369,23 +339,10 @@
     }
     
     .side-nav {
-        right: 20px !important; /* Всегда видна на десктопе */
+        right: 20px !important;
     }
 }
-        /* Горизонтальная ориентация на мобильных - навигация тоже скрыта */
-@media (max-width: 768px) and (orientation: landscape) {
-    .side-nav {
-        right: -280px;
-    }
-    
-    .side-nav.active {
-        right: 0;
-    }
-    
-    .side-nav.active ~ .nav-toggle {
-        right: 240px;
-    }
-}
+       
     
     
          </style>
@@ -703,15 +660,12 @@
     </section>
 
                 <script>
-                    // Добавьте в существующий script
+                    // Принудительное скрытие навигации при загрузке
 document.addEventListener('DOMContentLoaded', function() {
-    // Принудительно скрываем навигацию на мобильных при загрузке
+    const nav = document.querySelector('.side-nav');
     if (window.innerWidth <= 768) {
-        const nav = document.querySelector('.side-nav');
         nav.classList.remove('active');
     }
-    
-    // Остальной существующий код...
 });
     // Функция для переключения навигации
     function toggleNav() {
@@ -784,20 +738,3 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
