@@ -5,6 +5,160 @@
     <meta charset="UTF-8">
     <title>Портфолио переводчика: Сравнительный анализ</title>
     <style>
+        /* Базовые стили */
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #2c3e50;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+/* Стили для блоков с текстом */
+.text-block {
+    background: white;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.original {
+    border-left: 4px solid #e74c3c;
+}
+
+.ai-translation {
+    border-left: 4px solid #f39c12;
+}
+
+.human-translation {
+    border-left: 4px solid #27ae60;
+}
+
+/* Стили для комментариев */
+.comments {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.comment-item {
+    margin: 15px 0;
+    padding: 10px;
+    background: white;
+    border-radius: 3px;
+    border-left: 3px solid #3498db;
+    scroll-margin-top: 150px;
+}
+
+/* Стили для интерактивных сносок */
+.footnote-ref {
+    color: #e74c3c;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 2px;
+    transition: background-color 0.2s;
+    scroll-margin-top: 100px;
+    font-size: 0.8em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+.back-to-top {
+    font-size: 0.8em;
+    color: #3498db;
+    text-decoration: none;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.back-to-top:hover {
+    text-decoration: underline;
+    color: #2980b9;
+}
+
+/* Метки для блоков */
+.block-label {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.label-original { background: #e74c3c; color: white; }
+.label-ai { background: #f39c12; color: white; }
+.label-human { background: #27ae60; color: white; }
+
+/* Плавная прокрутка для всего документа */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Стихи */
+.poem {
+    font-style: italic;
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.source-info {
+    background: #e8f4fd;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    border-left: 4px solid #3498db;
+    font-size: 0.9em;
+}
+
+.source-info h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.source-info .indented-line {
+    margin-left: 85px;
+    text-indent: -20px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+}
+
+.source-info .first-line {
+    margin-bottom: 0;
+}
+
+.article-block, .authors-block {
+    margin-bottom: 8px;
+}
        /* Боковая навигация */
 .side-nav {
     position: fixed;
@@ -565,5 +719,6 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
