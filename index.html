@@ -122,17 +122,37 @@
         }
 
         /* Боковая навигация */
-        .side-nav {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
+/* Боковая навигация - по умолчанию скрыта на мобильных */
+.side-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* На мобильных - навигация скрыта за экраном */
+@media (max-width: 768px) {
+    .side-nav {
+        right: -280px;
+        transition: right 0.3s ease;
+    }
+    
+    .side-nav.active {
+        right: 0;
+    }
+}
+
+/* На десктопе - навигация всегда видна */
+@media (min-width: 769px) {
+    .side-nav {
+        right: 20px !important;
+    }
+}
 
         .nav-item {
             display: block;
@@ -435,6 +455,20 @@
     
     .side-nav {
         right: 20px !important;
+    }
+}
+        /* Горизонтальная ориентация на мобильных - навигация тоже скрыта */
+@media (max-width: 768px) and (orientation: landscape) {
+    .side-nav {
+        right: -280px;
+    }
+    
+    .side-nav.active {
+        right: 0;
+    }
+    
+    .side-nav.active ~ .nav-toggle {
+        right: 240px;
     }
 }
     
@@ -825,6 +859,7 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
