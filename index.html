@@ -362,6 +362,29 @@
                 right: 20px !important;
             }
         }
+        /* Исправление отступов для source-info на мобильных */
+@media (max-width: 768px) {
+    .source-info .indented-line {
+        margin-left: 0 !important;
+        text-indent: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .source-info .first-line {
+        margin-bottom: 4px !important;
+    }
+    
+    .article-block, .authors-block {
+        margin-bottom: 8px !important;
+    }
+    
+    /* Делаем текст более компактным на мобильных */
+    .source-info {
+        padding: 12px !important;
+        font-size: 0.85em !important;
+    }
+}
          </style>
 </head>
 <body>
@@ -755,6 +778,7 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
