@@ -5,127 +5,10 @@
     <meta charset="UTF-8">
     <title>Портфолио переводчика: Сравнительный анализ</title>
     <style>
-        /* Базовые стили */
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            position: relative;
-        }
-
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-
-        h2 {
-            color: #2c3e50;
-            border-left: 4px solid #3498db;
-            padding-left: 10px;
-            margin-top: 30px;
-        }
-
-        h3 {
-            color: #34495e;
-            margin-bottom: 10px;
-        }
-
-        /* Стили для блоков с текстом */
-        .text-block {
-            background: white;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .original {
-            border-left: 4px solid #e74c3c;
-        }
-
-        .ai-translation {
-            border-left: 4px solid #f39c12;
-        }
-
-        .human-translation {
-            border-left: 4px solid #27ae60;
-        }
-
-        /* Стили для комментариев */
-        .comments {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-
-        .comment-item {
-            margin: 15px 0;
-            padding: 10px;
-            background: white;
-            border-radius: 3px;
-            border-left: 3px solid #3498db;
-            scroll-margin-top: 150px;
-        }
-
-        /* Стили для интерактивных сносок */
-        .footnote-ref {
-            color: #e74c3c;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            padding: 0 2px;
-            transition: background-color 0.2s;
-            scroll-margin-top: 100px;
-            font-size: 0.8em;
-            vertical-align: super;
-            line-height: 0;
-        }
-
-        .back-to-top {
-            font-size: 0.8em;
-            color: #3498db;
-            text-decoration: none;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .back-to-top:hover {
-            text-decoration: underline;
-            color: #2980b9;
-        }
-
-        /* Метки для блоков */
-        .block-label {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .label-original { background: #e74c3c; color: white; }
-        .label-ai { background: #f39c12; color: white; }
-        .label-human { background: #27ae60; color: white; }
-
-        /* Плавная прокрутка для всего документа */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Боковая навигация */
-/* Боковая навигация - по умолчанию скрыта на мобильных */
+       /* Боковая навигация */
 .side-nav {
     position: fixed;
-    right: 20px;
+    right: -280px; /* По умолчанию скрыта для всех */
     top: 50%;
     transform: translateY(-50%);
     background: white;
@@ -133,217 +16,162 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     z-index: 1000;
+    width: 260px;
+    max-height: 70vh;
+    overflow-y: auto;
+    transition: right 0.3s ease;
 }
 
-/* На мобильных - навигация скрыта за экраном */
-@media (max-width: 768px) {
+.side-nav.active {
+    right: 0; /* Показывается при активации */
+}
+
+.nav-item {
+    display: block;
+    padding: 8px 12px;
+    margin: 5px 0;
+    text-decoration: none;
+    color: #2c3e50;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    transform: scale(1);
+}
+
+.nav-item:hover {
+    background: #3498db;
+    color: white;
+}
+
+.nav-item.active {
+    background: #2c3e50;
+    color: white;
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+/* Стили для подразделов навигации */
+.sub-nav {
+    margin-left: 15px;
+    border-left: 2px solid #3498db;
+    padding-left: 8px;
+}
+
+.sub-nav-item {
+    display: block;
+    padding: 6px 10px;
+    margin: 3px 0;
+    text-decoration: none;
+    color: #7f8c8d;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    transform: scale(1);
+}
+
+.sub-nav-item:hover {
+    background: #ecf0f1;
+    color: #2c3e50;
+}
+
+.sub-nav-item.active {
+    background: #3498db;
+    color: white;
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+.nav-section {
+    margin-bottom: 10px;
+}
+
+/* Кнопка для открытия навигации */
+.nav-toggle {
+    position: fixed;
+    top: 50%;
+    right: -12px;
+    transform: translateY(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 20px 8px;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    z-index: 999;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+    border: none;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    transition: right 0.3s ease;
+    width: 16px;
+}
+
+.nav-toggle::before {
+    content: "☰";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.side-nav.active ~ .nav-toggle {
+    right: 260px;
+}
+
+.side-nav.active ~ .nav-toggle::before {
+    content: "✕";
+}
+
+/* Кнопка закрытия */
+.nav-close {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 25px 10px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    z-index: 1001;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 60px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+.nav-close::before {
+    content: "✕";
+    writing-mode: horizontal-tb;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ТОЛЬКО для десктопов (широких экранов) */
+@media (min-width: 1024px) {
     .side-nav {
-        right: -280px;
-        transition: right 0.3s ease;
+        right: 20px; /* На десктопе всегда видна */
     }
     
-    .side-nav.active {
-        right: 0;
-    }
-}
-
-/* На десктопе - навигация всегда видна */
-@media (min-width: 769px) {
-    .side-nav {
-        right: 20px !important;
-    }
-}
-
-        .nav-item {
-            display: block;
-            padding: 8px 12px;
-            margin: 5px 0;
-            text-decoration: none;
-            color: #2c3e50;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            transform: scale(1);
-        }
-
-        .nav-item:hover {
-            background: #3498db;
-            color: white;
-        }
-
-        .nav-item.active {
-            background: #2c3e50;
-            color: white;
-            transform: scale(1.1);
-            font-weight: bold;
-        }
-
-        /* Стихи */
-        .poem {
-            font-style: italic;
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
-        }
-
-        /* Стили для подразделов навигации */
-        .sub-nav {
-            margin-left: 15px;
-            border-left: 2px solid #3498db;
-            padding-left: 8px;
-        }
-
-        .sub-nav-item {
-            display: block;
-            padding: 6px 10px;
-            margin: 3px 0;
-            text-decoration: none;
-            color: #7f8c8d;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            font-size: 12px;
-            transform: scale(1);
-        }
-
-        .sub-nav-item:hover {
-            background: #ecf0f1;
-            color: #2c3e50;
-        }
-
-        .sub-nav-item.active {
-            background: #3498db;
-            color: white;
-            transform: scale(1.05);
-            font-weight: bold;
-        }
-
-        .nav-section {
-            margin-bottom: 10px;
-        }
-
-        .source-info {
-            background: #e8f4fd;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 4px solid #3498db;
-            font-size: 0.9em;
-        }
-
-        .source-info h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-
-        .source-info .indented-line {
-            margin-left: 85px;
-            text-indent: -20px;
-            margin-top: -8px;
-        }
-
-        .source-info .article-title,
-        .source-info .authors-line {
-            margin-bottom: 0;
-        }
-
-        .source-info .first-line {
-            margin-bottom: 0;
-        }
-
-        .source-info .indented-line {
-            margin-left: 85px;
-            text-indent: -20px;
-            margin-top: -8px;
-            margin-bottom: 8px;
-        }
-
-        .article-block, .authors-block {
-            margin-bottom: 8px;
-        }
-
-        /* Кнопка для открытия навигации */
-        .nav-toggle {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            background: #2c3e50;
-            color: white;
-            padding: 12px 6px;
-            border-radius: 8px 0 0 8px;
-            cursor: pointer;
-            z-index: 999;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-size: 12px;
-            font-weight: bold;
-            display: none;
-            border: none;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-
-        /* Выдвижная навигация для мобильных */
-        /* Выдвижная навигация для мобильных устройств */
-/* Выдвижная навигация для мобильных устройств */
-@media (max-width: 768px) {
     .nav-toggle {
-        display: block;
-        right: -12px;
-        padding: 20px 8px;
-        background: #2c3e50;
-        color: transparent;
-        width: 16px;
-        transition: right 0.3s ease;
-        border-radius: 8px 0 0 8px;
-    }
-    
-    .nav-toggle::before {
-        content: "☰";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        font-size: 14px;
-        font-weight: bold;
-    }
-    
-    .side-nav {
-        right: -280px !important; /* Скрыта за экраном */
-    }
-    
-    .side-nav.active {
-        right: 0 !important; /* Показывается при активации */
-    }
-    
-    .side-nav.active ~ .nav-toggle {
-        right: 260px;
-    }
-    
-    .side-nav.active ~ .nav-toggle::before {
-        content: "✕";
-    }
-}
-
-/* ДЕСКТОП - навигация всегда видна */
-@media (min-width: 769px) {
-    .nav-toggle {
-        display: none !important;
+        display: none; /* На десктопе скрываем кнопку */
     }
     
     .nav-close {
-        display: none !important;
-    }
-    
-    .side-nav {
-        right: 20px !important;
+        display: none; /* На десктопе скрываем кнопку закрытия */
     }
 }
-       
-    
     
          </style>
 </head>
@@ -738,3 +566,4 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
