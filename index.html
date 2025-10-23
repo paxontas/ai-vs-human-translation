@@ -158,18 +158,17 @@
     font-weight: bold;
 }
 
-/* ТОЛЬКО для десктопов (широких экранов) */
 @media (min-width: 1024px) {
     .side-nav {
-        right: 20px; /* На десктопе всегда видна */
+        right: 20px !important; /* На десктопе всегда видна */
     }
     
     .nav-toggle {
-        display: none; /* На десктопе скрываем кнопку */
+        display: none !important; /* На десктопе скрываем кнопку */
     }
     
     .nav-close {
-        display: none; /* На десктопе скрываем кнопку закрытия */
+        display: none !important; /* На десктопе скрываем кнопку закрытия */
     }
 }
     
@@ -566,4 +565,5 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
