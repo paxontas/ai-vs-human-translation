@@ -286,9 +286,7 @@
         }
 
         /* Выдвижная навигация для мобильных */
-        /* Выдвижная навигация для мобильных (все ориентации) */
-/* Выдвижная навигация для мобильных */
-/* Выдвижная навигация для мобильных устройств (все ориентации) */
+        /* Выдвижная навигация для мобильных устройств */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -315,7 +313,7 @@
     .side-nav {
         position: fixed;
         top: 50%;
-        right: -280px;
+        right: -280px; /* Скрыта за экраном */
         transform: translateY(-50%);
         width: 260px;
         height: auto;
@@ -327,7 +325,7 @@
     }
     
     .side-nav.active {
-        right: 0;
+        right: 0; /* Показывается при активации */
     }
     
     .side-nav.active ~ .nav-toggle {
@@ -339,107 +337,24 @@
     }
     
     .nav-close {
-        position: absolute;
-        top: 50%;
-        left: -40px;
-        transform: translateY(-50%);
-        background: #2c3e50;
-        color: white;
-        padding: 25px 10px;
-        border-radius: 0 8px 8px 0;
-        cursor: pointer;
-        z-index: 1001;
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        font-size: 14px;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 60px;
-        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-    }
-    
-    .nav-close::before {
-        content: "✕";
-        writing-mode: horizontal-tb;
-        font-size: 18px;
-        font-weight: bold;
-    }
-    
-    .nav-section {
-        margin-bottom: 15px;
-    }
-    
-    .sub-nav {
-        display: block;
-        margin-left: 10px;
-    }
-    
-    /* Убираем отступы строк в source-info для мобильных */
-    .source-info .indented-line {
-        margin-left: 0 !important;
-        text-indent: 0 !important;
-        margin-top: 0 !important;
-        margin-bottom: 4px !important;
-    }
-    
-    .source-info .first-line {
-        margin-bottom: 4px !important;
-    }
-    
-    .article-block, .authors-block {
-        margin-bottom: 8px !important;
-    }
-    
-    /* Делаем текст более компактным на мобильных */
-    .source-info {
-        padding: 12px !important;
-        font-size: 0.85em !important;
+        display: block; /* Убедитесь, что кнопка закрытия видна */
     }
 }
 
-/* Для горизонтальной ориентации на мобильных - УВЕЛИЧИВАЕМ ВЫСОТУ */
+/* Для горизонтальной ориентации на мобильных */
 @media (max-width: 768px) and (orientation: landscape) {
     .side-nav {
         max-height: 85vh;
         width: 240px;
-        right: -280px; /* Важно: сохраняем скрытое положение */
+        right: -280px; /* ОБЯЗАТЕЛЬНО скрыта */
     }
     
     .side-nav.active {
-        right: 0; /* Важно: сохраняем открытое положение */
+        right: 0; /* Показывается при активации */
     }
     
     .side-nav.active ~ .nav-toggle {
-        right: 240px; /* Подвигаем кнопку ближе для узкого экрана */
-    }
-}
-
-/* Для очень маленьких экранов в горизонтальной ориентации */
-@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
-    .side-nav {
-        max-height: 90vh;
-        width: 220px;
-        right: -280px;
-    }
-    
-    .side-nav.active {
-        right: 0;
-    }
-    
-    .side-nav.active ~ .nav-toggle {
-        right: 220px;
-    }
-    
-    .nav-section {
-        margin-bottom: 8px;
-    }
-    
-    .nav-item, .sub-nav-item {
-        padding: 6px 10px;
-        font-size: 12px;
+        right: 240px;
     }
 }
 
@@ -454,7 +369,7 @@
     }
     
     .side-nav {
-        right: 20px !important;
+        right: 20px !important; /* Всегда видна на десктопе */
     }
 }
         /* Горизонтальная ориентация на мобильных - навигация тоже скрыта */
@@ -859,6 +774,7 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
