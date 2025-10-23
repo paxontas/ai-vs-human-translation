@@ -268,6 +268,7 @@
         /* Выдвижная навигация для мобильных */
         /* Выдвижная навигация для мобильных (все ориентации) */
 /* Выдвижная навигация для мобильных */
+/* Выдвижная навигация для мобильных устройств (все ориентации) */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -379,20 +380,20 @@
     }
 }
 
-/* Отдельно для горизонтальной ориентации */
+/* Для горизонтальной ориентации на мобильных - УВЕЛИЧИВАЕМ ВЫСОТУ */
 @media (max-width: 768px) and (orientation: landscape) {
     .side-nav {
         max-height: 85vh;
         width: 240px;
-        right: -280px; /* Добавьте эту строку */
+        right: -280px; /* Важно: сохраняем скрытое положение */
     }
     
     .side-nav.active {
-        right: 0; /* Добавьте эту строку */
+        right: 0; /* Важно: сохраняем открытое положение */
     }
     
     .side-nav.active ~ .nav-toggle {
-        right: 240px; /* Добавьте эту строку */
+        right: 240px; /* Подвигаем кнопку ближе для узкого экрана */
     }
 }
 
@@ -401,6 +402,15 @@
     .side-nav {
         max-height: 90vh;
         width: 220px;
+        right: -280px;
+    }
+    
+    .side-nav.active {
+        right: 0;
+    }
+    
+    .side-nav.active ~ .nav-toggle {
+        right: 220px;
     }
     
     .nav-section {
@@ -410,6 +420,21 @@
     .nav-item, .sub-nav-item {
         padding: 6px 10px;
         font-size: 12px;
+    }
+}
+
+/* ДЕСКТОП - навигация всегда видна */
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none !important;
+    }
+    
+    .nav-close {
+        display: none !important;
+    }
+    
+    .side-nav {
+        right: 20px !important;
     }
 }
     
@@ -800,6 +825,7 @@ window.addEventListener('resize', handleResize);
     <div class="nav-toggle" onclick="toggleNav()" title="Открыть меню"></div>
 </body>
 </html>
+
 
 
 
